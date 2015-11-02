@@ -13,6 +13,7 @@
 		3400E52A1BE1F6C90050A5A3 /* TaxiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E5271BE1F6C90050A5A3 /* TaxiCollectionViewCell.m */; };
 		3400E52B1BE1F6C90050A5A3 /* TaxiCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E5291BE1F6C90050A5A3 /* TaxiCollectionViewController.m */; };
 		3400E52E1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E52D1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m */; };
+		340557301BE74D69009DD98F /* AddYourOpinionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */; };
 		3442373F1BE0AA3700965E3E /* nightclub01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373B1BE0AA3700965E3E /* nightclub01.jpg */; };
 		344237401BE0AA3700965E3E /* nightclub02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373C1BE0AA3700965E3E /* nightclub02.jpg */; };
 		344237411BE0AA3700965E3E /* nightclub03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373D1BE0AA3700965E3E /* nightclub03.jpg */; };
@@ -66,6 +67,8 @@
 		3400E52C1BE1F77B0050A5A3 /* TaxiCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiCollectionReusableView.h; sourceTree = "<group>"; };
 		3400E52D1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiCollectionReusableView.m; sourceTree = "<group>"; };
 		340556F51BE700D6009DD98F /* DemoMixOfSwiftObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMixOfSwiftObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddYourOpinionVC.h; sourceTree = "<group>"; };
+		3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddYourOpinionVC.m; sourceTree = "<group>"; };
 		3442373B1BE0AA3700965E3E /* nightclub01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub01.jpg; sourceTree = "<group>"; };
 		3442373C1BE0AA3700965E3E /* nightclub02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub02.jpg; sourceTree = "<group>"; };
 		3442373D1BE0AA3700965E3E /* nightclub03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub03.jpg; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				34FC62EA1BE5C9A50083EA40 /* dance2.png */,
 				34B2CF4D1BE6061600E86EBC /* dance3.png */,
 				34509C431BD7254400AF43FD /* Main.storyboard */,
+				3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */,
+				3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */,
 				34B2CF4F1BE65D1B00E86EBC /* CommentsTableViewController.h */,
 				34B2CF501BE65D1B00E86EBC /* CommentsTableViewController.m */,
 				34B2CF521BE6627E00E86EBC /* Jonny.jpg */,
@@ -520,6 +525,7 @@
 				69248DF61BE3A6320072B03C /* EventDetailViewController.m in Sources */,
 				34509C861BD77B2000AF43FD /* ITRAirSideMenu.m in Sources */,
 				34509C8F1BD77B2D00AF43FD /* ITRSecondViewController.m in Sources */,
+				340557301BE74D69009DD98F /* AddYourOpinionVC.m in Sources */,
 				34509C981BD782D100AF43FD /* CategoryTableViewController.m in Sources */,
 				69248DF31BE3A5ED0072B03C /* MKPartyAnnotation.m in Sources */,
 				34509C9D1BD78AA900AF43FD /* ITRLeftMenuController.m in Sources */,
@@ -736,6 +742,7 @@
 				3405570A1BE700D7009DD98F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34509C321BD7254400AF43FD /* Build configuration list for PBXProject "ProjTipsy" */ = {
 			isa = XCConfigurationList;

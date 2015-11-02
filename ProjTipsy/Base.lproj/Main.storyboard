@@ -883,16 +883,15 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csk-Bd-XZR">
+                                        <button opaque="NO" tag="56" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csk-Bd-XZR">
                                             <rect key="frame" x="532" y="138" width="60" height="32"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="LCo-2z-aQV"/>
                                             </constraints>
-                                            <state key="normal" image="Marker"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="55" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-oo-EJz">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="55" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUO-oo-EJz">
                                             <rect key="frame" x="354" y="138" width="176" height="32"/>
                                             <animations/>
                                             <constraints>
@@ -903,7 +902,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="57" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-NZ-myx">
-                                            <rect key="frame" x="547" y="8" width="30" height="30"/>
+                                            <rect key="frame" x="547" y="138" width="30" height="30"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="eV0-RO-6Zb"/>
@@ -921,7 +920,7 @@
                                         <constraint firstItem="yAp-fe-G5p" firstAttribute="leading" secondItem="2AR-3r-h0L" secondAttribute="leading" id="3Wb-Nk-8Lq"/>
                                         <constraint firstItem="kZX-up-TAl" firstAttribute="leading" secondItem="10P-ET-psi" secondAttribute="leading" id="74L-rW-BeF"/>
                                         <constraint firstItem="10P-ET-psi" firstAttribute="trailing" secondItem="kZX-up-TAl" secondAttribute="trailing" id="7uY-vM-0Pf"/>
-                                        <constraint firstItem="10P-ET-psi" firstAttribute="top" secondItem="ltx-NZ-myx" secondAttribute="bottom" constant="12" id="EUq-yd-wXI"/>
+                                        <constraint firstItem="10P-ET-psi" firstAttribute="top" secondItem="ltx-NZ-myx" secondAttribute="bottom" constant="-118" id="EUq-yd-wXI"/>
                                         <constraint firstAttribute="trailing" secondItem="Csk-Bd-XZR" secondAttribute="trailing" constant="8" id="GjB-Lh-aVd"/>
                                         <constraint firstItem="kZX-up-TAl" firstAttribute="trailing" secondItem="Sa7-Lh-19w" secondAttribute="trailingMargin" id="GxS-4R-8Na"/>
                                         <constraint firstItem="GUO-oo-EJz" firstAttribute="baseline" secondItem="2AR-3r-h0L" secondAttribute="baseline" id="LN4-ml-bhi"/>
@@ -1312,9 +1311,27 @@
             </objects>
             <point key="canvasLocation" x="2513" y="2654"/>
         </scene>
+        <!--Add Your OpinionVC-->
+        <scene sceneID="oBR-ho-HF5">
+            <objects>
+                <viewController storyboardIdentifier="AddYourOpinionVC" id="tJQ-hh-293" customClass="AddYourOpinionVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jnh-pN-V1x"/>
+                        <viewControllerLayoutGuide type="bottom" id="B9m-6r-qnC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G4k-Uf-o43">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aHg-Qg-7Bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513" y="3349"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Marker" width="32" height="32"/>
         <image name="Menu white" width="50" height="50"/>
         <image name="gohome" width="296" height="180"/>
         <image name="nightclub01.jpg" width="678" height="960"/>

@@ -80,10 +80,10 @@
         
         [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[TaxiTableViewController controller]]];
     }
-    else if (selectedIndexPath.row == 4){
-
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[TaxiCollectionViewController controller]]];
-    }
+//    else if (selectedIndexPath.row == 4){
+//
+//        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[TaxiCollectionViewController controller]]];
+//    }
 
 }
 
@@ -102,7 +102,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,8 +129,8 @@
         cell.textLabel.highlightedTextColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
         cell.selectedBackgroundView = [[UIView alloc] init];
 
-        NSArray *titles = @[@"Event", @"Category", @"DJ", @"VIP", @"Vicinity"];
-        NSArray *imgArray = @[@"Planner",@"Bar",@"DJ",@"VIP",@"MapMarker"];
+        NSArray *titles = @[@"Events", @"Clubs", @"DJs", @"VIP"];
+        NSArray *imgArray = @[@"Planner",@"Bar",@"DJ",@"VIP"];
 //      cell.imageView.frame = CGRect(100, 100);
         cell.imageView.image = [UIImage imageNamed:imgArray[indexPath.row]];
 //      [cell.contentView addSubview:imageView];

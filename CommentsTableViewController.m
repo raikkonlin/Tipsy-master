@@ -7,8 +7,12 @@
 //
 
 #import "CommentsTableViewController.h"
+#import "AddYourOpinionVC.h"
 
-@interface CommentsTableViewController ()
+@interface CommentsTableViewController () <UIScrollViewDelegate> {
+
+    __weak UIButton *_buttonToComment;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
 //@property(strong,nonatomic) NSString  *messageObjectID;
@@ -133,11 +137,45 @@
 
     self.labelUserName.text = @"Johnny Scrap";
     self.labelUserName.textColor = [UIColor whiteColor];
-    
-//     NSLog(@"objectID=%@",self.objectID);
+
+    UIButton *buttonToComment = [[UIButton alloc] initWithFrame:CGRectMake(0, self.tableView.bounds.size.height-50, self.tableView.bounds.size.width, 50)];
+    buttonToComment.backgroundColor = [UIColor clearColor];
+
+    buttonToComment.layer.borderWidth = 2.0f;
+    buttonToComment.layer.borderColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0].CGColor;
+    [buttonToComment setTitle:@"Add Your Opinion" forState:UIControlStateNormal];
+    [buttonToComment setTitleColor:[UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0] forState:UIControlStateNormal];
+    [buttonToComment setShowsTouchWhenHighlighted:YES];
+    [buttonToComment addTarget:self
+                 action:@selector(AddYourOpinionButton)
+       forControlEvents:UIControlEventTouchUpInside];
+//    UILabel *labelCom = [[UILabel alloc] init];
+//             labelCom.text = @"Add Your Opinion",
+//    [self.tableView addSubview:labelCom];
+    [self.tableView addSubview:buttonToComment];
+    _buttonToComment = buttonToComment;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
 
 }
 
+-(void)AddYourOpinionButton{
+
+    AddYourOpinionVC *controllerEvent = [self.storyboard instantiateViewControllerWithIdentifier:@"AddYourOpinionVC"];
+    [self presentViewController:controllerEvent animated:NO completion:nil];
+    
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    _buttonToComment.transform = CGAffineTransformMakeTranslation(0, scrollView.contentOffset.y);
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        // this is needed to prevent cells from being displayed above our static view
+    [self.tableView bringSubviewToFront:_buttonToComment];
+}
 
 -(void)viewDidAppear:(BOOL)animated{
 
@@ -176,6 +214,7 @@
 }
 
 -(void)backButtonPressed{
+
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
