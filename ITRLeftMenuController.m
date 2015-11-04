@@ -17,10 +17,18 @@
 #import "AppViewController.h"
 #import "TaxiCollectionViewController.h"
 #import "StorePFQueryVC.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import "QRCodeViewController.h"
+#import "AppViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
-@interface ITRLeftMenuController ()<ITRAirSideMenuDelegate>
+@interface ITRLeftMenuController () <ITRAirSideMenuDelegate>
 {
     NSIndexPath *selectedIndexPath;
+    NSUserDefaults *userDefault;
+    NSDictionary *picture;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLogo;
@@ -42,6 +50,112 @@
 {
     [super viewDidLoad];
     self.imageViewLogo.image = [UIImage imageNamed:@"Tipsy"];
+
+//    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+//    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.frame = CGRectMake(0, self.view.bounds.size.height-160, self.view.bounds.size.width-130, 50);
+//    [loginButton setTitle:@"臉書登入啦" forState:UIControlStateNormal];
+    [self.view addSubview:loginButton];
+
+    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
+
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fbTokenChangeNoti:)
+                                                 name:FBSDKAccessTokenDidChangeNotification object:nil];
+
+
+
+
+
+
+   NSLog(@"%@",userDefault);
+
+
+}
+
+-(void)fbTokenChangeNoti:(NSNotification*)noti {
+
+    NSLog(@"User name: %@",[FBSDKProfile currentProfile].name);
+    NSLog(@"User ID: %@",[FBSDKProfile currentProfile].userID);
+
+//    NSDictionary *picture = [[NSDictionary alloc] init];
+
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                       parameters:@{@"fields": @"name,id,picture,gender,birthday,email"}]
+     startWithCompletionHandler:^(FBSDKGraphRequestConnection
+                                  *connection, id result, NSError *error) {
+         if (!error) {
+//             NSLog(@"fetched user:%@", result);
+             picture = result;
+
+//              NSLog(@"fetched user:%@", picture);
+         } }];
+
+    if ([FBSDKAccessToken currentAccessToken]) {
+
+        FBSDKAccessToken *fbAccessToken = [FBSDKAccessToken currentAccessToken];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSString *token = fbAccessToken.tokenString;
+        NSString *uid = fbAccessToken.userID;
+        [manager POST:@"http://www.pa9.club/api/v1/login" parameters:@{@"access_token":token,@"uid":uid} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON:%@",responseObject);
+                //NSString *message = responseObject[@"message"];
+            NSString *loginToken = responseObject[@"auth_token"];
+            userDefault = [NSUserDefaults
+                           standardUserDefaults];
+            [userDefault setObject:loginToken forKey:@"loginToken"];
+            NSLog(@"%@",loginToken);
+            [userDefault synchronize];
+
+
+
+
+        }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  NSLog(@"Error: %@", error);
+              }];
+    }
+    else{
+
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            if (error) {
+                    // Process error
+            } else if (result.isCancelled) {
+                    // Handle cancellations
+            } else {
+                    // If you ask for multiple permissions at once, you
+                    // should check if specific permissions missing
+                if ([result.grantedPermissions containsObject:@"publish_actions"]) {
+                        // Do work
+
+                    [login logInWithReadPermissions:@[@"user_likes",@"user_birthday"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                        if (error) {
+                                // Process error
+                        } else if (result.isCancelled) {
+                                // Handle cancellations
+                        } else {
+                                // If you ask for multiple permissions at once, you
+                                // should check if specific permissions missing
+                            if ([result.grantedPermissions containsObject:@"user_birthday"]) {
+                                    // Do work
+
+                                NSLog(@"Permission  2: %@",result.grantedPermissions);
+                            }
+                        }
+                    }];
+
+                }
+            }
+        }];
+        
+    }
 }
 
 #pragma mark -
@@ -70,7 +184,7 @@
         [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
     }else if (selectedIndexPath.row == 1){
         
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[StorePFQueryVC controller]]];
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
     }
     else if (selectedIndexPath.row == 2){
 
@@ -78,7 +192,7 @@
     }
     else if (selectedIndexPath.row == 3){
         
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[TaxiTableViewController controller]]];
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[QRCodeViewController controller]]];
     }
 //    else if (selectedIndexPath.row == 4){
 //
@@ -155,4 +269,9 @@
     return 60;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+
+
+}
 @end

@@ -14,6 +14,9 @@
 #import "TaxiCollectionViewController.h"
 #import <Parse/Parse.h>
 #import "StorePFQueryVC.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface AppDelegate ()<ITRAirSideMenuDelegate>
 
@@ -21,14 +24,32 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+}
+
+void uncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+        // Internal error reporting
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [Parse setApplicationId:@"s6bYtW529EN7R75BrlT5DdasvpYBZTsvjy9axapd"
                   clientKey:@"iEd6tov1HeXrbTFOcRuczDEVJzFNcNImPRAx8a0x"];
 
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
+
     //sidemenu created with content view controller & menu view controller
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[AppViewController controller]];
     ITRLeftMenuController *leftMenuViewController = [ITRLeftMenuController controller];
@@ -61,6 +82,10 @@
 
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES; //show activity indicator
 
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+
+
     return YES;
 }
 
@@ -80,6 +105,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

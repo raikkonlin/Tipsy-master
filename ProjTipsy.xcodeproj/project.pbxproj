@@ -13,7 +13,13 @@
 		3400E52A1BE1F6C90050A5A3 /* TaxiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E5271BE1F6C90050A5A3 /* TaxiCollectionViewCell.m */; };
 		3400E52B1BE1F6C90050A5A3 /* TaxiCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E5291BE1F6C90050A5A3 /* TaxiCollectionViewController.m */; };
 		3400E52E1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3400E52D1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m */; };
+		340367C61BE84F2E00F0016E /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 340367C51BE84F2E00F0016E /* qrcode.png */; };
 		340557301BE74D69009DD98F /* AddYourOpinionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */; };
+		340557331BE7ADF0009DD98F /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 340557321BE7ADF0009DD98F /* QRCodeViewController.m */; };
+		340557371BE7C7B0009DD98F /* QRCodeScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 340557361BE7C7B0009DD98F /* QRCodeScanVC.m */; };
+		340557391BE7CDEC009DD98F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340557381BE7CDEC009DD98F /* AVFoundation.framework */; };
+		3409D9AE1BE8B190007A2DA9 /* CommentsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9AD1BE8B190007A2DA9 /* CommentsTableVC.m */; };
+		3409D9B81BE9ED2F007A2DA9 /* TextFieldDelegateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9B71BE9ED2F007A2DA9 /* TextFieldDelegateVC.m */; };
 		3442373F1BE0AA3700965E3E /* nightclub01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373B1BE0AA3700965E3E /* nightclub01.jpg */; };
 		344237401BE0AA3700965E3E /* nightclub02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373C1BE0AA3700965E3E /* nightclub02.jpg */; };
 		344237411BE0AA3700965E3E /* nightclub03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373D1BE0AA3700965E3E /* nightclub03.jpg */; };
@@ -66,9 +72,19 @@
 		3400E5291BE1F6C90050A5A3 /* TaxiCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiCollectionViewController.m; sourceTree = "<group>"; };
 		3400E52C1BE1F77B0050A5A3 /* TaxiCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiCollectionReusableView.h; sourceTree = "<group>"; };
 		3400E52D1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiCollectionReusableView.m; sourceTree = "<group>"; };
+		340367C51BE84F2E00F0016E /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
 		340556F51BE700D6009DD98F /* DemoMixOfSwiftObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMixOfSwiftObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddYourOpinionVC.h; sourceTree = "<group>"; };
 		3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddYourOpinionVC.m; sourceTree = "<group>"; };
+		340557311BE7ADF0009DD98F /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		340557321BE7ADF0009DD98F /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		340557351BE7C7B0009DD98F /* QRCodeScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanVC.h; sourceTree = "<group>"; };
+		340557361BE7C7B0009DD98F /* QRCodeScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanVC.m; sourceTree = "<group>"; };
+		340557381BE7CDEC009DD98F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3409D9AC1BE8B190007A2DA9 /* CommentsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableVC.h; sourceTree = "<group>"; };
+		3409D9AD1BE8B190007A2DA9 /* CommentsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableVC.m; sourceTree = "<group>"; };
+		3409D9B71BE9ED2F007A2DA9 /* TextFieldDelegateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegateVC.m; sourceTree = "<group>"; };
+		3409D9B91BE9EE3A007A2DA9 /* TextFieldDelegateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegateVC.h; sourceTree = "<group>"; };
 		3442373B1BE0AA3700965E3E /* nightclub01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub01.jpg; sourceTree = "<group>"; };
 		3442373C1BE0AA3700965E3E /* nightclub02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub02.jpg; sourceTree = "<group>"; };
 		3442373D1BE0AA3700965E3E /* nightclub03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub03.jpg; sourceTree = "<group>"; };
@@ -141,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340557391BE7CDEC009DD98F /* AVFoundation.framework in Frameworks */,
 				69248DED1BE3A4280072B03C /* MapKit.framework in Frameworks */,
 				FB93BDFBEDBF38417164BCD2 /* libPods-ProjTipsy.a in Frameworks */,
 			);
@@ -176,9 +193,22 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
+		340557341BE7ADF8009DD98F /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				340557311BE7ADF0009DD98F /* QRCodeViewController.h */,
+				340557321BE7ADF0009DD98F /* QRCodeViewController.m */,
+				340367C51BE84F2E00F0016E /* qrcode.png */,
+				340557351BE7C7B0009DD98F /* QRCodeScanVC.h */,
+				340557361BE7C7B0009DD98F /* QRCodeScanVC.m */,
+			);
+			name = QRCode;
+			sourceTree = "<group>";
+		};
 		34509C2E1BD7254400AF43FD = {
 			isa = PBXGroup;
 			children = (
+				340557341BE7ADF8009DD98F /* QRCode */,
 				3400E51D1BE1F67B0050A5A3 /* Event */,
 				347711981BD8FBEE00B1796E /* StoreInfo */,
 				347711971BD8FBC800B1796E /* Category */,
@@ -251,8 +281,13 @@
 		347711971BD8FBC800B1796E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				34509C431BD7254400AF43FD /* Main.storyboard */,
 				34509C961BD782D100AF43FD /* CategoryTableViewController.h */,
 				34509C971BD782D100AF43FD /* CategoryTableViewController.m */,
+				3409D9AC1BE8B190007A2DA9 /* CommentsTableVC.h */,
+				3409D9AD1BE8B190007A2DA9 /* CommentsTableVC.m */,
+				3409D9B91BE9EE3A007A2DA9 /* TextFieldDelegateVC.h */,
+				3409D9B71BE9ED2F007A2DA9 /* TextFieldDelegateVC.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -267,11 +302,10 @@
 				34FC62E91BE5C9A50083EA40 /* dance1.png */,
 				34FC62EA1BE5C9A50083EA40 /* dance2.png */,
 				34B2CF4D1BE6061600E86EBC /* dance3.png */,
-				34509C431BD7254400AF43FD /* Main.storyboard */,
-				3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */,
-				3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */,
 				34B2CF4F1BE65D1B00E86EBC /* CommentsTableViewController.h */,
 				34B2CF501BE65D1B00E86EBC /* CommentsTableViewController.m */,
+				3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */,
+				3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */,
 				34B2CF521BE6627E00E86EBC /* Jonny.jpg */,
 			);
 			name = StoreInfo;
@@ -300,6 +334,7 @@
 		D0D020D1E9C2D9791E951C8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				340557381BE7CDEC009DD98F /* AVFoundation.framework */,
 				69248DEC1BE3A4280072B03C /* MapKit.framework */,
 				31573DB6A689A781C777D6AE /* libPods-ProjTipsy.a */,
 			);
@@ -431,6 +466,7 @@
 				344237411BE0AA3700965E3E /* nightclub03.jpg in Resources */,
 				34B2CF531BE6627E00E86EBC /* Jonny.jpg in Resources */,
 				34FC62EB1BE5C9A50083EA40 /* dance1.png in Resources */,
+				340367C61BE84F2E00F0016E /* qrcode.png in Resources */,
 				69248E011BE3A9F70072B03C /* notify4.png in Resources */,
 				344237401BE0AA3700965E3E /* nightclub02.jpg in Resources */,
 				69248E001BE3A9F70072B03C /* notify3.png in Resources */,
@@ -520,6 +556,7 @@
 				3493557F1BE3802C006723FC /* ShowDescriptionVC.m in Sources */,
 				69D924A81BD8BE4000269DEF /* TaxiButtonView.m in Sources */,
 				3400E5231BE1F6A50050A5A3 /* APPChildViewController.m in Sources */,
+				3409D9B81BE9ED2F007A2DA9 /* TextFieldDelegateVC.m in Sources */,
 				3400E5251BE1F6A50050A5A3 /* AppViewController.m in Sources */,
 				34B2CF511BE65D1B00E86EBC /* CommentsTableViewController.m in Sources */,
 				69248DF61BE3A6320072B03C /* EventDetailViewController.m in Sources */,
@@ -533,12 +570,15 @@
 				3400E52E1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m in Sources */,
 				3400E52B1BE1F6C90050A5A3 /* TaxiCollectionViewController.m in Sources */,
 				34509C3C1BD7254400AF43FD /* main.m in Sources */,
+				3409D9AE1BE8B190007A2DA9 /* CommentsTableVC.m in Sources */,
 				3400E52A1BE1F6C90050A5A3 /* TaxiCollectionViewCell.m in Sources */,
 				69248DF91BE3A65F0072B03C /* EventPicTableViewCell.m in Sources */,
+				340557331BE7ADF0009DD98F /* QRCodeViewController.m in Sources */,
 				69248DF01BE3A5E50072B03C /* EventDetailTableViewController.m in Sources */,
 				34509C921BD77B3500AF43FD /* AppDelegate.m in Sources */,
 				349355781BE34FAF006723FC /* StorePFQueryVC.m in Sources */,
 				3477119D1BD9384100B1796E /* StoreTableViewController.m in Sources */,
+				340557371BE7C7B0009DD98F /* QRCodeScanVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

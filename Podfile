@@ -6,6 +6,9 @@
 target 'ProjTipsy' do
   pod 'Parse'
   pod 'ParseUI'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
   pod "AFNetworking", "~> 2.0"
 end
 

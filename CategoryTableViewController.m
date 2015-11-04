@@ -12,10 +12,12 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <SystemConfiguration/SystemConfiguration.h> //檢查連線狀況
+#import "CommentsTableVC.h"
 
 @interface CategoryTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *tipsyMetadata;
+
 
 @end
 
@@ -49,6 +51,9 @@
 
         //menu照片的顏色受leftBarButtonItem.tintColor控制
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
+
+
+
 
     [self loadTipsyMetadata];
 
@@ -85,10 +90,6 @@
     else {
        NSLog(@"有網路");
     }
-
-
-
-
 
         // 設定類別屬性 hotTexts 的初始大小為 20，用來存抓下來的熱門文章列表
      self.tipsyMetadata= [NSMutableArray arrayWithCapacity:40];
@@ -160,7 +161,6 @@
     return self.tipsyMetadata.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCellId" forIndexPath:indexPath];
@@ -170,19 +170,53 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CategoryCellId"];
     }
 
+    cell.backgroundColor = [UIColor clearColor];
 
-    UIImageView *imageView = (UIImageView*)[cell.contentView viewWithTag:100];
+    UIImageView *imageView = (UIImageView*)[cell.contentView viewWithTag:90];
     imageView.image = nil;
 
     NSDictionary *metaData = self.tipsyMetadata[indexPath.row];
 
-    UILabel *label = (UILabel*) [cell.contentView viewWithTag:200];
-//    label.text = metaData[@"name"];
-    label.text = [metaData objectForKey:@"name"];
-    label.textColor = [UIColor clearColor];
-    [label setFont:[UIFont systemFontOfSize:35]];
+    UILabel *storeNameLabel = (UILabel*) [cell.contentView viewWithTag:91];
 
-//    NSArray *img_list = metaData[@"yelp_image"];   //有多張圖的網址的話 可以用陣列存網址
+    storeNameLabel.text = [metaData objectForKey:@"name"];
+    storeNameLabel.backgroundColor = [UIColor clearColor];
+    storeNameLabel.textColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
+    [storeNameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Italic" size:24]];
+
+    UILabel *descriptionLabel = (UILabel*) [cell.contentView viewWithTag:92];
+
+    descriptionLabel.text = [metaData objectForKey:@"description"];
+    descriptionLabel.backgroundColor = [UIColor clearColor];
+    descriptionLabel.textColor = [UIColor whiteColor];
+    [descriptionLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Italic" size:18]];
+
+    UILabel *addressLabel = (UILabel*) [cell.contentView viewWithTag:93];
+
+    addressLabel.text = [metaData objectForKey:@"address"];
+    addressLabel.backgroundColor = [UIColor clearColor];
+    addressLabel.textColor = [UIColor whiteColor];
+    [addressLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Italic" size:10]];
+
+    UILabel *updateDate = (UILabel*) [cell.contentView viewWithTag:94];
+    NSString *myString = @"Update: ";
+    NSString *test = [myString stringByAppendingString:[metaData objectForKey:@"updated_at"]];
+    updateDate.text = test;
+    updateDate.backgroundColor = [UIColor clearColor];
+    updateDate.textColor = [UIColor whiteColor];
+    [updateDate setFont:[UIFont fontWithName:@"HelveticaNeue-Italic" size:12]];
+
+    UILabel *commentLabel = (UILabel*) [cell.contentView viewWithTag:95];
+
+    NSNumber *message_id = [NSNumber numberWithInt:[[metaData objectForKey:@"comments_count"] intValue]];
+
+    commentLabel.text = [message_id stringValue];
+    commentLabel.textColor = [UIColor colorWithRed:51/255.0 green:152/255.0 blue:219/255.0 alpha:1.0];
+    [commentLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:20]];
+    commentLabel.layer.cornerRadius = commentLabel.frame.size.width/2;
+    commentLabel.layer.borderWidth = 1.0f;
+    commentLabel.layer.borderColor = [UIColor colorWithRed:51/255.0 green:152/255.0 blue:219/255.0 alpha:1.0].CGColor;
+    commentLabel.layer.masksToBounds = YES;
 
             if ( [metaData[@"photo"] isEqual: [NSNull null]] ) {
 
@@ -194,24 +228,13 @@
                 NSString *imgUrlString = metaData[@"photo"];
                 NSURL *url = [NSURL URLWithString:imgUrlString];
 
-//                    NSLog(@"url=%@",metaData[@"yelp_image"]);
-//                NSLog(@"url=%@",url);
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//                                NSLog(@"request=%@",request);
-
 
                 __weak UITableView *weakTableView = tableView;
                 __weak UITableViewCell *weakCell = cell;
-//                __weak UIImageView *weakImageView = cell.imageView;
                 [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
 
-//                    UIImageView *weakImageView = [[UIImageView alloc] init];
-//                    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-//                    NSLog(@"%f",(double)width);
-//                    CGFloat height = [UIScreen mainScreen].bounds.size.height;
-//                    NSLog(@"%f",(double)height);
-//                    weakImageView.frame=CGRectMake(0, 0, width, (height-44)/2);
-                UIImageView *weakImageView = (UIImageView*)[weakCell.contentView viewWithTag:100];
+                UIImageView *weakImageView = (UIImageView*)[weakCell.contentView viewWithTag:90];
                 weakImageView.image = image;
                 weakImageView.contentMode = UIViewContentModeScaleToFill;
                 weakImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -232,52 +255,56 @@
 
             }
 
+        //setup background image-------------------------------
+    UIImage *backgroundImage = [UIImage imageNamed:@"menu_bg"];
+    UIImageView *backgroundImageView=[[UIImageView alloc] initWithFrame:self.view.frame];
+    backgroundImageView.image=backgroundImage;
+    [cell insertSubview:backgroundImageView atIndex:0];
+        //end of setting up background image-------------------
+
     return cell;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    /*
+     ShowDescriptionVC *controllerEvent = [[ShowDescriptionVC alloc] init];
+     controllerEvent = [self.storyboard instantiateViewControllerWithIdentifier:@"ShowDescriptionVC"];
+     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controllerEvent];
+     */
+
+    CommentsTableVC *controllerEvent = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentsTableVC"];
+/*
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    controllerEvent.storeName = [object objectForKey:@""];
+    controllerEvent.objectID = [object objectId];*/
+    NSDictionary  *dictEdit = self.tipsyMetadata[indexPath.row];
+    NSLog(@"store %@",[dictEdit objectForKey:@"id"]);
+    controllerEvent.storeId = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"id"]];
+
+        //    UILabel *storeNameLabel = [[UILabel alloc] init];
+        //    storeNameLabel.text = [object objectForKey:@"storename"];
+        //    NSLog(@"%@",storeNameLabel.text);
+
+        //        // 設定date的格式後再傳
+        //    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        //    [df setDateFormat:@"yyy-MM-dd"];
+        //    NSString *dateString = [df stringFromDate:[object objectForKey:@"date"]];
+        //    controllerEvent.dateTime = dateString;
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    controllerEvent.imageFile1 = [object objectForKey:@""];
+    controllerEvent.imageFile2 = [object objectForKey:@""];
+    controllerEvent.imageFile3 = [object objectForKey:@""];
+    controllerEvent.likeLabel  = [object objectForKey:@""];*/
+
+    [self presentViewController:controllerEvent animated:NO completion:nil];
+
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)AddEditNotification:(NSNotification *)notification{
+
+    [self.tableView reloadData];
+
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
