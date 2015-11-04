@@ -9,8 +9,12 @@
 #import "APPChildViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "EventDetailTableViewController.h"
+#import <Parse/Parse.h>
 
-@interface APPChildViewController ()
+@interface APPChildViewController (){
+    NSMutableDictionary *dic ;
+    NSMutableArray *array;
+}
 
 @end
 
@@ -31,6 +35,80 @@
     self.screenNumber.text = [NSString stringWithFormat:@"%@", controller.APITitlearray[self.index]];
     self.BackGroundImage.image = controller.APIImagearray[self.index];
 
+    
+//    使用parse抓EventDetail
+    
+//    總共需要：picture/,subjects/,store/,price/,partypic1,partypic2,partypic3,partypic4,latitude/,longtitude/,index/
+    //  Parse抓movie資料
+    PFQuery *query = [PFQuery queryWithClassName:@"Events"];
+    [query orderByDescending:@"index"];
+//     [query whereKey:@"index" equalTo:@3];
+    [query whereKey:@"index" containedIn:@[@"1"]];
+    NSLog(@"%@", query);
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+
+        for (PFObject *event in objects) {
+            //  抓出名稱
+            PFObject *subjects = event[@"subjects"];
+            //  抓出店名
+            PFObject *store = event[@"store"];
+            //  抓出價錢
+            PFObject *price = event[@"price"];
+            //  抓出緯度
+            PFObject *latitude = event[@"latitude"];
+            //  抓出經度
+            PFObject *longtitude = event[@"longtitude"];
+            //  抓出index
+            PFObject *index = event[@"index"];
+            //  抓出日期
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"yyy-MM-dd"];
+            NSString *date = [df stringFromDate:event[@"date"]];
+            //  整理放進dic
+            dic = [@{@"subjects":subjects,
+                     @"store":store,
+                     @"price":price,
+                     @"latitude":latitude,
+                     @"longtitude":longtitude,
+                     @"index":index,
+                     @"date":date}
+                   mutableCopy];
+            //  抓出照片～file轉data~~~
+            PFFile *picture = event[@"picture"];
+            [picture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                if (error == nil) {
+                    //  data轉image~~
+                    UIImage *image = [[UIImage alloc]initWithData:data];
+                    [dic setObject:image forKey:@"picture"];
+                    NSLog(@"picture = %@", dic);
+//                    [[NSNotificationCenter defaultCenter]
+//                     postNotificationName:@"sendDetail" object:nil
+//                     userInfo:dic];
+                }
+                
+            }];
+            PFFile *partypic1 = event[@"partypic1"];
+            [partypic1 getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                if (error == nil) {
+                    //  data轉image~~
+                    UIImage *image = [[UIImage alloc]initWithData:data];
+                    [dic setObject:image forKey:@"partypic1"];
+                    NSLog(@"picture = %@", dic);
+//                    [[NSNotificationCenter defaultCenter]
+//                     postNotificationName:@"sendDetail" object:nil
+//                     userInfo:dic];
+                    
+                }
+                
+            }];
+            
+
+//        NSLog(@"%@",dic);
+        };
+//        NSLog(@"%@",dic);
+    [self.view reloadInputViews];}];
+    
+    
 //    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
 //    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
 //    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];

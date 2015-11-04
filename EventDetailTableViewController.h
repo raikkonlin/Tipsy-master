@@ -8,21 +8,33 @@
 
 #import <UIKit/UIKit.h>
 #import "EventPicTableViewCell.h"
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
 #import "MKPartyAnnotation.h"
-@interface EventDetailTableViewController : UITableViewController<UIScrollViewDelegate>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+@interface EventDetailTableViewController : UITableViewController <UIScrollViewDelegate,MKMapViewDelegate>
 {
     CLLocationManager *locationManager;
     BOOL isFirstGetLocation;
-    CLLocationCoordinate2D coordinate101;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *partyMap;
 
+@property (weak, nonatomic) IBOutlet UIImageView *partyPicView;
 
+@property (weak, nonatomic) IBOutlet UILabel *subjects;
+
+@property (weak, nonatomic) IBOutlet UILabel *store;
+
+@property (weak, nonatomic) IBOutlet UILabel *price;
+
+@property (strong, nonatomic) NSMutableDictionary *Detaildic;
+
+@property (nonatomic) CLLocationCoordinate2D coordinateStore;
 
 @property (weak, nonatomic) IBOutlet EventPicTableViewCell *EventPicTableViewCell;
+
+
+
 
 +(instancetype) controller;
 

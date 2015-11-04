@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CECA9CD65158271979780EDDD68B22376997AB6F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DFD72A2350B380B5DB9553842A8EF5A0A9F53255" : 0,
+    "CECA9CD65158271979780EDDD68B22376997AB6F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9E27723C-6981-49FE-BC88-6616ED6DA663",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DFD72A2350B380B5DB9553842A8EF5A0A9F53255" : "..\/Desktop\/ALPHA%20CAMP%20%E4%BD%9C%E6%A5%AD\/ACOBJCVersion",
+    "CECA9CD65158271979780EDDD68B22376997AB6F" : "Tipsy-master\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ProjTipsy",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ProjTipsy.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:raikkonlin\/Tipsy-master.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CECA9CD65158271979780EDDD68B22376997AB6F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:raikkonlin\/ACOBJCVersion.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DFD72A2350B380B5DB9553842A8EF5A0A9F53255"
+    }
+  ]
+}

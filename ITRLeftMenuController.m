@@ -23,6 +23,7 @@
 #import "QRCodeViewController.h"
 #import "AppViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "EventViewController.h"
 
 @interface ITRLeftMenuController () <ITRAirSideMenuDelegate>
 {
@@ -181,7 +182,7 @@
 - (void)sideMenu:(ITRAirSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController{
     
     if (selectedIndexPath.row == 0) {
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[EventViewController controller]]];
     }else if (selectedIndexPath.row == 1){
         
         [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
