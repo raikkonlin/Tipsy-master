@@ -43,7 +43,7 @@
     [super viewDidLoad];
 
     _highlightView = [[UIView alloc] init];
-//    _highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
+    _highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
     _highlightView.layer.borderColor = [UIColor greenColor].CGColor;
     _highlightView.layer.borderWidth = 3;
     [self.view addSubview:_highlightView];
@@ -52,7 +52,7 @@
     _label.frame = CGRectMake(0, self.view.bounds.size.height - 80, self.view.bounds.size.width, 80);
 //    _label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _label.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
-    _label.textColor = [UIColor whiteColor];
+    _label.textColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
     _label.textAlignment = NSTextAlignmentCenter;
     _label.text = @"(waiting)";
     [self.view addSubview:_label];
@@ -75,8 +75,8 @@
     _output.metadataObjectTypes = [_output availableMetadataObjectTypes];
 
     _prevLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
-    [_prevLayer setFrame:self.viewPreview.layer.bounds];
-//    _prevLayer.frame = self.viewPreview.frame;
+//    [_prevLayer setFrame:self.viewPreview.layer.bounds];
+    _prevLayer.frame = self.view.frame;
     _prevLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:_prevLayer];
 
@@ -173,6 +173,7 @@
         }
         else
             _label.text = @"(waiting)";
+        _label.textColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
     }
 
     _highlightView.frame = highlightViewRect;

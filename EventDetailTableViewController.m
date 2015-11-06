@@ -85,8 +85,14 @@
 
 -(void)setViewDetail {
     _partyPicView.image = _Detaildic[@"picture"];
+    _subjects.numberOfLines = 0;
+    _subjects.lineBreakMode = NSLineBreakByWordWrapping;
     _subjects.text = _Detaildic[@"subjects"];
+    _store.numberOfLines = 0;
+    _store.lineBreakMode = NSLineBreakByWordWrapping;
     _store.text = _Detaildic[@"store"];
+    _price.numberOfLines = 0;
+    _price.lineBreakMode = NSLineBreakByWordWrapping;
     _price.text = _Detaildic[@"price"];
     
     self.EventPicTableViewCell.picScrollView.contentSize = CGSizeMake(4* [UIScreen mainScreen].bounds.size.width /2, self.EventPicTableViewCell.frame.size.height -16 );

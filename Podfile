@@ -10,5 +10,6 @@ target 'ProjTipsy' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod "AFNetworking", "~> 2.0"
+  pod "youtube-ios-player-helper", "~> 0.1.4"
 end
 

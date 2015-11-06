@@ -66,7 +66,7 @@
     self.messageTextView.textColor = [UIColor whiteColor];
     [self.messageTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Italic" size:20]];
 
-    ratingArray = @[@"⭐️",@"⭐️⭐️",@"⭐️⭐️⭐️",@"⭐️⭐️⭐️⭐️",@"⭐️⭐️⭐️⭐️⭐️"];
+    ratingArray = @[@"🎉",@"🎉🎉",@"🎉🎉🎉",@"🎉🎉🎉🎉",@"🎉🎉🎉🎉🎉"];
      [self.ratringPickerView selectRow:2 inComponent:0 animated:YES];
 
     self.confirmButton.layer.borderWidth = 2.0f;

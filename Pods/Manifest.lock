@@ -44,6 +44,7 @@ PODS:
   - ParseUI (1.1.6):
     - Bolts/Tasks (~> 1.2)
     - Parse (~> 1.8)
+  - youtube-ios-player-helper (0.1.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Parse
   - ParseUI
+  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
@@ -61,5 +63,6 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 213adf63e073f41a346b0e7a689805880dc5150e
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+  youtube-ios-player-helper: 84b1485ebb4b7c6b619c6e05edcb55186723a7c6
 
 COCOAPODS: 0.39.0

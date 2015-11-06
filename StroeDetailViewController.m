@@ -17,9 +17,10 @@
 {
 
     NSArray *commentArray;
-    NSArray *eventArray;
+    NSMutableArray *eventArray;
     NSArray *dateArray;
     NSString *objectID;
+    NSMutableArray *upComingEventArray;
 }
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *eventPickerView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonComment;
 @property (weak, nonatomic) IBOutlet UILabel *labelComment;
+@property (weak, nonatomic) IBOutlet UILabel *mostRecentlyEvent;
 
 @end
 
@@ -39,7 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    /*
     eventArray=@[@"Friday's Night : 2015-11-11",
                  @"Double Eleven's Day : 2015-11-13",
                  @"DJ 黃杰之夜 : 2015-11-14"];
@@ -47,6 +49,9 @@
         //                @"2015-11-13",
         //                @"2015-11-14"];
 
+   */
+    eventArray = nil;
+    eventArray = [[NSMutableArray alloc] initWithCapacity:5];
 
         //************************************************
     UIImage *backgroundImage = [UIImage imageNamed:@"menu_bg"];
@@ -90,6 +95,47 @@
             PFFile *photo3 = storeImage[@"Picture3"];
             self.labelLike.text = storeImage[@"Like"] ;
             objectID = storeImage[@"objectId"];
+
+
+
+            if ( storeImage[@"event1"] != NULL) {
+
+                 [eventArray addObject:storeImage[@"event1"]];
+                self.mostRecentlyEvent.text = [NSString stringWithFormat:@"  %@", eventArray[0]];
+                 NSLog(@"eventarray %lu ",eventArray.count);
+                NSLog(@"storeImage[@event1] %@ ",storeImage[@"event1"]);
+                  }
+            if( storeImage[@"event2"] != NULL){
+
+                     [eventArray addObject:storeImage[@"event2"]];
+                      NSLog(@"eventarray %lu ",eventArray.count);
+                      NSLog(@"storeImage[@event2] %@ ",storeImage[@"event2"]);
+                      }
+            if(storeImage[@"evnet3"] != NULL){
+
+                         [eventArray addObject:storeImage[@"evnet3"]];
+                          NSLog(@"eventarray %lu ",eventArray.count);
+                          NSLog(@"storeImage[@event3] %@ ",storeImage[@"evnet3"]);
+                          }
+            if(storeImage[@"event4"] != NULL){
+
+                             [eventArray addObject:storeImage[@"event4"]];
+                              NSLog(@"eventarray %lu ",eventArray.count);
+                              NSLog(@"storeImage[@event4] %@ ",storeImage[@"event4"]);
+                              }
+            NSLog(@"storeImage[@event5] %@ ",storeImage[@"event5"]);
+            if(storeImage[@"event5"] != NULL){
+
+                                 [eventArray addObject:storeImage[@"event5"]];
+                                  NSLog(@"eventarray %lu ",eventArray.count);
+                                  NSLog(@"storeImage[@event5] %@ ",storeImage[@"event5"]);
+                                  }
+
+
+                                  NSLog(@"eventarray.count %lu ",eventArray.count);
+            upComingEventArray = [eventArray mutableCopy];
+            [upComingEventArray removeObjectAtIndex: 0];
+            [self.eventPickerView reloadAllComponents];
 
             [photo1 getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError *_Nullable error) {
 
@@ -191,6 +237,7 @@
         //end of setting labelCommnet attributes-------------
 
 
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(AddCommentRefresh:)
                                                  name:@"AddCommentRefresh"
@@ -210,7 +257,7 @@
 {
         //檢查連線狀況
     NSString *host = @"www.apple.com";
-    SCNetworkReachabilityRef  reachability =SCNetworkReachabilityCreateWithName(nil, host.UTF8String);
+    SCNetworkReachabilityRef  reachability = SCNetworkReachabilityCreateWithName(nil, host.UTF8String);
     SCNetworkReachabilityFlags flags;
     BOOL result = NO;
     if(reachability) {
@@ -258,6 +305,7 @@
             if ( [dict[@"name"] isEqualToString:self.storeName]) {
                 self.labelComment.text = dict[@"comments_count"];
             }
+
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -285,8 +333,8 @@
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-
-    return eventArray.count;
+    NSLog(@"upComingEventArray.count %lu",upComingEventArray.count);
+    return upComingEventArray.count;
 }
 
     // normal setup of PickerView
@@ -303,7 +351,8 @@
         retval = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
     }
 
-    retval.text = eventArray[row];
+    retval.text = upComingEventArray[row];
+    NSLog(@"retval.text %@",retval.text);
     retval.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     retval.textAlignment = NSTextAlignmentCenter;
     retval.textColor = [UIColor whiteColor];

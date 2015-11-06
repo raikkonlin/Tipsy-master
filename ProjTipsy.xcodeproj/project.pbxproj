@@ -20,11 +20,11 @@
 		3409D9B81BE9ED2F007A2DA9 /* TextFieldDelegateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9B71BE9ED2F007A2DA9 /* TextFieldDelegateVC.m */; };
 		3409D9BD1BEA2B5D007A2DA9 /* APPChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9BB1BEA2B5D007A2DA9 /* APPChildViewController.m */; };
 		3409D9BE1BEA2B5D007A2DA9 /* APPChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3409D9BC1BEA2B5D007A2DA9 /* APPChildViewController.xib */; };
-		3409D9C71BEA2BE4007A2DA9 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C01BEA2BE3007A2DA9 /* EventDetailTableViewController.m */; };
 		3409D9C81BEA2BE4007A2DA9 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C21BEA2BE3007A2DA9 /* EventDetailViewController.m */; };
 		3409D9C91BEA2BE4007A2DA9 /* EventPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C41BEA2BE4007A2DA9 /* EventPicTableViewCell.m */; };
-		3409D9CA1BEA2BE4007A2DA9 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C61BEA2BE4007A2DA9 /* EventViewController.m */; };
 		3409D9CD1BEA2BF2007A2DA9 /* MKPartyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9CC1BEA2BF2007A2DA9 /* MKPartyAnnotation.m */; };
+		340ABA081BECFA5F005FE432 /* EventDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 340ABA071BECFA5F005FE432 /* EventDetailTableViewController.m */; };
+		340ABA0B1BECFA8A005FE432 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 340ABA0A1BECFA8A005FE432 /* EventViewController.m */; };
 		340BD0751BEB2541005BDA0B /* QRCodeSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 340BD0741BEB2541005BDA0B /* QRCodeSuccess.m */; };
 		3442373F1BE0AA3700965E3E /* nightclub01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373B1BE0AA3700965E3E /* nightclub01.jpg */; };
 		344237401BE0AA3700965E3E /* nightclub02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373C1BE0AA3700965E3E /* nightclub02.jpg */; };
@@ -49,6 +49,7 @@
 		34B2CF531BE6627E00E86EBC /* Jonny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34B2CF521BE6627E00E86EBC /* Jonny.jpg */; };
 		34D891181BEC269600052EED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D891171BEC269600052EED /* AudioToolbox.framework */; };
 		34D8911B1BEC79AF00052EED /* StroeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D8911A1BEC79AF00052EED /* StroeDetailViewController.m */; };
+		34D8911F1BECEFB700052EED /* DJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D8911E1BECEFB700052EED /* DJViewController.m */; };
 		34FC62EB1BE5C9A50083EA40 /* dance1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FC62E91BE5C9A50083EA40 /* dance1.png */; };
 		34FC62EC1BE5C9A50083EA40 /* dance2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FC62EA1BE5C9A50083EA40 /* dance2.png */; };
 		69248DED1BE3A4280072B03C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69248DEC1BE3A4280072B03C /* MapKit.framework */; };
@@ -89,16 +90,16 @@
 		3409D9BA1BEA2B5D007A2DA9 /* APPChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPChildViewController.h; sourceTree = "<group>"; };
 		3409D9BB1BEA2B5D007A2DA9 /* APPChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPChildViewController.m; sourceTree = "<group>"; };
 		3409D9BC1BEA2B5D007A2DA9 /* APPChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPChildViewController.xib; sourceTree = "<group>"; };
-		3409D9BF1BEA2BE3007A2DA9 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailTableViewController.h; sourceTree = "<group>"; };
-		3409D9C01BEA2BE3007A2DA9 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailTableViewController.m; sourceTree = "<group>"; };
 		3409D9C11BEA2BE3007A2DA9 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		3409D9C21BEA2BE3007A2DA9 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		3409D9C31BEA2BE4007A2DA9 /* EventPicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPicTableViewCell.h; sourceTree = "<group>"; };
 		3409D9C41BEA2BE4007A2DA9 /* EventPicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPicTableViewCell.m; sourceTree = "<group>"; };
-		3409D9C51BEA2BE4007A2DA9 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
-		3409D9C61BEA2BE4007A2DA9 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		3409D9CB1BEA2BF2007A2DA9 /* MKPartyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPartyAnnotation.h; sourceTree = "<group>"; };
 		3409D9CC1BEA2BF2007A2DA9 /* MKPartyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPartyAnnotation.m; sourceTree = "<group>"; };
+		340ABA061BECFA5F005FE432 /* EventDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailTableViewController.h; sourceTree = "<group>"; };
+		340ABA071BECFA5F005FE432 /* EventDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailTableViewController.m; sourceTree = "<group>"; };
+		340ABA091BECFA8A005FE432 /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
+		340ABA0A1BECFA8A005FE432 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		340BD0731BEB2541005BDA0B /* QRCodeSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeSuccess.h; sourceTree = "<group>"; };
 		340BD0741BEB2541005BDA0B /* QRCodeSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeSuccess.m; sourceTree = "<group>"; };
 		3442373B1BE0AA3700965E3E /* nightclub01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub01.jpg; sourceTree = "<group>"; };
@@ -137,6 +138,8 @@
 		34D891171BEC269600052EED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		34D891191BEC79AF00052EED /* StroeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StroeDetailViewController.h; sourceTree = "<group>"; };
 		34D8911A1BEC79AF00052EED /* StroeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StroeDetailViewController.m; sourceTree = "<group>"; };
+		34D8911D1BECEFB700052EED /* DJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJViewController.h; sourceTree = "<group>"; };
+		34D8911E1BECEFB700052EED /* DJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJViewController.m; sourceTree = "<group>"; };
 		34FB3B391BE3152E00B5F805 /* DemoDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FC62E91BE5C9A50083EA40 /* dance1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dance1.png; sourceTree = "<group>"; };
 		34FC62EA1BE5C9A50083EA40 /* dance2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dance2.png; sourceTree = "<group>"; };
@@ -194,14 +197,14 @@
 				3409D9BC1BEA2B5D007A2DA9 /* APPChildViewController.xib */,
 				3400E5211BE1F6A50050A5A3 /* AppViewController.h */,
 				3400E5221BE1F6A50050A5A3 /* AppViewController.m */,
-				3409D9BF1BEA2BE3007A2DA9 /* EventDetailTableViewController.h */,
-				3409D9C01BEA2BE3007A2DA9 /* EventDetailTableViewController.m */,
+				340ABA061BECFA5F005FE432 /* EventDetailTableViewController.h */,
+				340ABA071BECFA5F005FE432 /* EventDetailTableViewController.m */,
 				3409D9C11BEA2BE3007A2DA9 /* EventDetailViewController.h */,
 				3409D9C21BEA2BE3007A2DA9 /* EventDetailViewController.m */,
 				3409D9C31BEA2BE4007A2DA9 /* EventPicTableViewCell.h */,
 				3409D9C41BEA2BE4007A2DA9 /* EventPicTableViewCell.m */,
-				3409D9C51BEA2BE4007A2DA9 /* EventViewController.h */,
-				3409D9C61BEA2BE4007A2DA9 /* EventViewController.m */,
+				340ABA091BECFA8A005FE432 /* EventViewController.h */,
+				340ABA0A1BECFA8A005FE432 /* EventViewController.m */,
 				3409D9CB1BEA2BF2007A2DA9 /* MKPartyAnnotation.h */,
 				3409D9CC1BEA2BF2007A2DA9 /* MKPartyAnnotation.m */,
 			);
@@ -225,6 +228,7 @@
 		34509C2E1BD7254400AF43FD = {
 			isa = PBXGroup;
 			children = (
+				34D8911C1BECEFAC00052EED /* DJ */,
 				340557341BE7ADF8009DD98F /* QRCode */,
 				3400E51D1BE1F67B0050A5A3 /* Event */,
 				347711981BD8FBEE00B1796E /* StoreInfo */,
@@ -328,6 +332,15 @@
 				34509C431BD7254400AF43FD /* Main.storyboard */,
 			);
 			name = StoreInfo;
+			sourceTree = "<group>";
+		};
+		34D8911C1BECEFAC00052EED /* DJ */ = {
+			isa = PBXGroup;
+			children = (
+				34D8911D1BECEFB700052EED /* DJViewController.h */,
+				34D8911E1BECEFB700052EED /* DJViewController.m */,
+			);
+			name = DJ;
 			sourceTree = "<group>";
 		};
 		69D924A01BD8BE2400269DEF /* TaxiView */ = {
@@ -574,6 +587,7 @@
 			files = (
 				34509C8D1BD77B2D00AF43FD /* ITRFirstViewController.m in Sources */,
 				69D924AB1BD8BE4000269DEF /* TaxiTableViewController.m in Sources */,
+				340ABA081BECFA5F005FE432 /* EventDetailTableViewController.m in Sources */,
 				3493557F1BE3802C006723FC /* ShowDescriptionVC.m in Sources */,
 				69D924A81BD8BE4000269DEF /* TaxiButtonView.m in Sources */,
 				3409D9B81BE9ED2F007A2DA9 /* TextFieldDelegateVC.m in Sources */,
@@ -588,19 +602,19 @@
 				34509C9D1BD78AA900AF43FD /* ITRLeftMenuController.m in Sources */,
 				69D924AA1BD8BE4000269DEF /* TaxiTableViewCell.m in Sources */,
 				3400E52E1BE1F77B0050A5A3 /* TaxiCollectionReusableView.m in Sources */,
+				340ABA0B1BECFA8A005FE432 /* EventViewController.m in Sources */,
 				3400E52B1BE1F6C90050A5A3 /* TaxiCollectionViewController.m in Sources */,
 				34509C3C1BD7254400AF43FD /* main.m in Sources */,
 				3409D9C81BEA2BE4007A2DA9 /* EventDetailViewController.m in Sources */,
-				3409D9CA1BEA2BE4007A2DA9 /* EventViewController.m in Sources */,
 				3409D9CD1BEA2BF2007A2DA9 /* MKPartyAnnotation.m in Sources */,
 				3409D9AE1BE8B190007A2DA9 /* CommentsTableVC.m in Sources */,
 				3400E52A1BE1F6C90050A5A3 /* TaxiCollectionViewCell.m in Sources */,
 				340557331BE7ADF0009DD98F /* QRCodeViewController.m in Sources */,
 				34509C921BD77B3500AF43FD /* AppDelegate.m in Sources */,
 				349355781BE34FAF006723FC /* StorePFQueryVC.m in Sources */,
+				34D8911F1BECEFB700052EED /* DJViewController.m in Sources */,
 				3477119D1BD9384100B1796E /* StoreTableViewController.m in Sources */,
 				340557371BE7C7B0009DD98F /* QRCodeScanVC.m in Sources */,
-				3409D9C71BEA2BE4007A2DA9 /* EventDetailTableViewController.m in Sources */,
 				3409D9BD1BEA2B5D007A2DA9 /* APPChildViewController.m in Sources */,
 				3409D9C91BEA2BE4007A2DA9 /* EventPicTableViewCell.m in Sources */,
 			);

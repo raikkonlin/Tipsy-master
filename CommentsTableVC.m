@@ -22,6 +22,7 @@
     NSMutableArray *storeCommentArray;
     NSString *fbUserName;
     NSString *fbUserID;
+    NSDictionary *rankingStar;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -38,6 +39,13 @@
 
     [super viewDidLoad];
 
+    /*
+    rankingStar =@{@"1": @"🌟",
+                   @"2": @"🌟🌟",
+                   @"3": @"🌟🌟🌟",
+                   @"4": @"🌟🌟🌟🌟",
+                   @"5": @"🌟🌟🌟🌟🌟"};
+    */
     
 
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
@@ -258,6 +266,23 @@
     NSLog(@"store %@",[metaData objectForKey:@"rating"]);
     NSString *tempString = [[NSString alloc] init];
     tempString = [NSString stringWithFormat:@"%@", [metaData objectForKey:@"rating"]];
+
+    if ([tempString isEqualToString:@"1"]) {
+
+        tempString = @"🎉";
+    }else if ([tempString isEqualToString:@"2"]){
+
+        tempString = @"🎉🎉";
+    }else if ([tempString isEqualToString:@"3"]){
+
+        tempString = @"🎉🎉🎉";
+    }else if ([tempString isEqualToString:@"4"]){
+
+        tempString = @"🎉🎉🎉🎉";
+    }else if ([tempString isEqualToString:@"5"]){
+
+        tempString = @"🎉🎉🎉🎉🎉";
+    }
     ratingNameLabel.text = tempString;
     ratingNameLabel.backgroundColor = [UIColor clearColor];
     ratingNameLabel.textColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];

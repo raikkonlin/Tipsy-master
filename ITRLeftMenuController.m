@@ -24,6 +24,7 @@
 #import "AppViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "EventViewController.h"
+#import "DJViewController.h"
 
 @interface ITRLeftMenuController () <ITRAirSideMenuDelegate>
 {
@@ -183,7 +184,7 @@
     }
     else if (selectedIndexPath.row == 2){
 
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[DJViewController controller]]];
     }
     else if (selectedIndexPath.row == 3){
         

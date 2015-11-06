@@ -26,24 +26,27 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *eventPageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+
 @end
 
 @implementation EventViewController
 + (instancetype) controller{
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([EventViewController class])];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view setBackgroundColor:[UIColor blackColor]];
+    
     DetailDic = [[NSMutableDictionary alloc]init];
     arrayall = [[NSMutableArray alloc]init];
     arrayDetail =[[NSMutableArray alloc]init];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(sendDetail:) name:@"sendDetail" object:nil];
+
     [self getParseData];
-    
+
     _pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     _pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
     _pageControl.backgroundColor = [UIColor blackColor];
@@ -63,6 +66,12 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
     
 //    [self setEventPage];
+    
+    UILongPressGestureRecognizer *LongPress = [[UILongPressGestureRecognizer alloc]
+                                   initWithTarget:self action:@selector(LongPress:)];
+    LongPress.minimumPressDuration =0.3;
+    [self.view addGestureRecognizer:LongPress];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,7 +140,13 @@
 //}
 
 -(void)getParseData {
-    
+    //    轉球時間
+                                UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc]
+                                                                                  initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                                [self.view addSubview:activityIndicatorView];
+                                activityIndicatorView.center = self.view.center;
+                                [self.view bringSubviewToFront:activityIndicatorView];
+                                [activityIndicatorView startAnimating];
     //    總共需要：picture/,subjects/,store/,price/,partypic1,partypic2,partypic3,partypic4,latitude/,longtitude/,index/
     //  Parse抓movie資料
     PFQuery *query = [PFQuery queryWithClassName:@"Events"];
@@ -196,7 +211,7 @@
                     CGFloat width, height;
                     width = [UIScreen mainScreen].bounds.size.width;
                     height = [UIScreen mainScreen].bounds.size.height;
-                    [_eventPageView setContentSize:CGSizeMake(width * (NSInteger)totalcount, height)];
+                    [_eventPageView setContentSize:CGSizeMake(width * (NSInteger)totalcount, _eventPageView.frame.size.height)];
                     
                     for (int i=_pageControl.numberOfPages; i !=0; i--) {
                         CGRect frame = CGRectMake(width*(i-1), 0, width, height);
@@ -208,7 +223,9 @@
                         [imageView.layer setCornerRadius:15.0];
                         
                         if (i == [dic[@"index"] intValue]) {
+                            
                             imageView.image = dic[@"picture"];
+
                             [_eventPageView addSubview:imageView];
                             [arrayDetail addObject:dic];
 //                            製作btn
@@ -229,49 +246,13 @@
                 
                 }];
 
-//            for (int i = 1; i < 5; i++) {
-//                NSString *picStr = [NSString stringWithFormat:@"partypic%d", i];
-//                PFFile *partypic = event[picStr];
-//                
-//            }
-            
 
-            
-            /*
-            PFFile *partypic1 = event[@"partypic1"];
-            [partypic1 getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
-                if (error == nil) {
-                    //  data轉image~~
-                    UIImage *image = [[UIImage alloc]initWithData:data];
-                    [dic setObject:image forKey:@"partypic1"];
-//                    NSLog(@"picture = %@", dic);
-                    [[NSNotificationCenter defaultCenter]
-                     postNotificationName:@"sendDetail" object:nil
-                     userInfo:dic];
-                    
-                }
-                
-            }];
-            
-            */
-            
-            //        NSLog(@"%@",dic);
         };
         [self setEventPage];
-        //        NSLog(@"%@",dic);
-//        [self.view reloadInputViews];}];
-    
-    
-    //    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-    //    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
-    //    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
-    
-    //    self.edgesForExtendedLayout = UIRectEdgeNone;
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    //    self.navigationController.navigationBar.translucent = NO;
 
     }];
+
+    
 }
 
 -(void)sendDetail:(NSNotification *)noti{
@@ -310,16 +291,16 @@
 }
 
 
-- (IBAction)partyDetailPressed:(UIButton *)sender {
-//    NSLog(@"array  = %@", arrayDetail);
-//    NSLog(@"currentPage = %ld", _pageControl.currentPage);
+-(void) LongPress:(id)sender {
+    //    NSLog(@"array  = %@", arrayDetail);
+    //    NSLog(@"currentPage = %ld", _pageControl.currentPage);
     for (NSMutableDictionary *currentPagedic in arrayDetail) {
-//        NSLog(@"%d, %ld",[dict[@"index"] intValue], _pageControl.currentPage);
+        //        NSLog(@"%d, %ld",[dict[@"index"] intValue], _pageControl.currentPage);
         if ([currentPagedic[@"index"] intValue] == _pageControl.currentPage + 1 ) {
             NSLog(@"asdfasdfasdf");
-//            [[NSNotificationCenter defaultCenter]
-//             postNotificationName:@"sendDetail" object:nil
-//             userInfo:dict];
+            //            [[NSNotificationCenter defaultCenter]
+            //             postNotificationName:@"sendDetail" object:nil
+            //             userInfo:dict];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             EventDetailTableViewController *controller =  [storyboard instantiateViewControllerWithIdentifier:@"EventDetailTableViewController"];
             controller.Detaildic = currentPagedic;
@@ -328,8 +309,9 @@
             
         }
     }
-    
-    
-    
+
 }
+
+
+
 @end

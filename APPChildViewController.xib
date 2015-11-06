@@ -85,14 +85,6 @@
                         </mask>
                     </variation>
                 </visualEffectView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGv-t1-cel">
-                    <rect key="frame" x="8" y="363" width="73" height="76"/>
-                    <animations/>
-                    <state key="normal" image="wine-icon-1"/>
-                    <connections>
-                        <action selector="dismissBut:" destination="-1" eventType="touchUpInside" id="iLl-mO-r5e"/>
-                    </connections>
-                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -106,6 +98,5 @@
     </objects>
     <resources>
         <image name="mapicon" width="32" height="32"/>
-        <image name="wine-icon-1" width="200" height="200"/>
     </resources>
 </document>
