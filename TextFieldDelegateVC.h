@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TextFieldDelegateVC : UIViewController <UITextViewDelegate>
+@interface TextFieldDelegateVC : UIViewController 
 
 
 @property(strong,nonatomic) NSString *storeID;

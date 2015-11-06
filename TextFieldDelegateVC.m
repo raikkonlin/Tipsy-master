@@ -8,14 +8,18 @@
 
 #import "TextFieldDelegateVC.h"
 #import "AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface TextFieldDelegateVC () <UIPickerViewDataSource,UIPickerViewDelegate>
+@interface TextFieldDelegateVC () <UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
 {
 
     NSArray *ratingArray;
     NSString *rating;
     NSUserDefaults *userDefault;
     NSString *authToken;
+    NSString *fbUserName;
+    NSString *fbUserID;
+    NSString *content;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
@@ -30,20 +34,29 @@
 
 
 @implementation TextFieldDelegateVC
-static NSUInteger limit = 40;
 
 -(void) viewDidLoad
 {
     [super viewDidLoad];
 
-    self.userImage.image = [UIImage imageNamed:@"Jonny.jpg"];
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    fbUserName = [userDefaultes stringForKey:@"userName"];
+    fbUserID = [userDefaultes stringForKey:@"userID"];
+
+    NSString *path1 = [@"http://graph.facebook.com/" stringByAppendingString:fbUserID ];
+    NSString *path =[path1 stringByAppendingString:@"/picture"];
+    [self.userImage setImageWithURL:[NSURL URLWithString:path]];
+
+    self.messageTextView.delegate = self;
+
+//    self.userImage.image = [UIImage imageNamed:@"Jonny.jpg"];
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
     self.userImage.layer.borderWidth =3.0f;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width/2;
     self.userImage.clipsToBounds = YES;
 
 
-    self.labelUserName.text = @"Johnny Scrap";
+    self.labelUserName.text = fbUserName;
     self.labelUserName.textColor = [UIColor whiteColor];
 
 //    self.messageTextView.text = @"Commments only for 140 characters";
@@ -81,6 +94,7 @@ static NSUInteger limit = 40;
     }];
 
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+
         NSLog(@"You pressed button one");
 
     NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
@@ -93,41 +107,49 @@ static NSUInteger limit = 40;
 
     NSLog(@"auth_token:%@",authToken);
     NSLog(@"rating:%@",rating);
-    NSLog(@"content:%@",self.messageTextView.text);
+    NSLog(@"content:%@",content);
     NSLog(@"store_id:%@",self.storeID);
+        NSLog(@"");
 
-
-    NSDictionary *params = @ {@"auth_token" :authToken, @"rating" :rating, @"content" :self.messageTextView.text, @"store_id" :self.storeID };
+    NSDictionary *params = @ {@"auth_token" :authToken, @"rating" :rating, @"content" :content, @"store_id" :self.storeID };
 
 
     [manager POST:URL_SIGNIN parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         NSLog(@"JSON: %@", responseObject);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AddCommentRefresh" object:nil userInfo:nil];
+
     }
           failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
+         /*
          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error while sending POST"
                                                              message:@"Sorry, try again."
                                                             delegate:nil
                                                    cancelButtonTitle:@"Ok"
                                                    otherButtonTitles:nil];
          [alertView show];
-
+         */
          NSLog(@"Error: %@", [error localizedDescription]);
+//         NSLog(@"Error: %@", error);
+//         NSLog(@"JSON: %@", responseObject);
+         [self dismissViewControllerAnimated:NO completion:nil];
      }];
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"AddEditNotification" object:nil userInfo:nil];
-    [self dismissViewControllerAnimated:NO completion:nil];
-}];
 
+     [self dismissViewControllerAnimated:NO completion:nil];
+
+
+
+}];
     [alertAsk addAction:cancelButton];
     [alertAsk addAction:okButton];
 
     alertAsk.view.tintColor = [UIColor grayColor];
 
     [self presentViewController:alertAsk animated:YES completion:nil];
-//    [self dismissViewControllerAnimated:NO completion:nil]; 
 }
+
 /*
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 
@@ -169,6 +191,12 @@ static NSUInteger limit = 40;
 //    NSLog(@"row %lu component %lu", row, component);
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+
+    content=textView.text;
+}
+
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     NSLog(@"textViewShouldBeginEditing:");
     textView.text = @"";
@@ -189,7 +217,7 @@ static NSUInteger limit = 40;
 }
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-
+  /*
     unsigned long allowedLength = limit - [textView.text length] + range.length;
 
     if (text.length > allowedLength) {  //means lenght of replacement text is greater than allowed lenght
@@ -227,6 +255,18 @@ static NSUInteger limit = 40;
     else{
         return YES;
     }
+   */
+    
+    if ([text isEqualToString:@"\n"]) {
+            // Be sure to test for equality using the "isEqualToString" message
+        [textView resignFirstResponder];
+
+            // Return FALSE so that the final '\n' character doesn't get added
+        return FALSE;
+    }
+        // For any other character return TRUE so that the text gets added to the view
+    return TRUE;
+
 
 }
 
@@ -294,6 +334,5 @@ static NSUInteger limit = 40;
 -(void)backButtonPressed{
     [self dismissViewControllerAnimated:NO completion:nil];
 }
-
 
 @end

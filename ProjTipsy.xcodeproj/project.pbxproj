@@ -25,6 +25,7 @@
 		3409D9C91BEA2BE4007A2DA9 /* EventPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C41BEA2BE4007A2DA9 /* EventPicTableViewCell.m */; };
 		3409D9CA1BEA2BE4007A2DA9 /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9C61BEA2BE4007A2DA9 /* EventViewController.m */; };
 		3409D9CD1BEA2BF2007A2DA9 /* MKPartyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3409D9CC1BEA2BF2007A2DA9 /* MKPartyAnnotation.m */; };
+		340BD0751BEB2541005BDA0B /* QRCodeSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 340BD0741BEB2541005BDA0B /* QRCodeSuccess.m */; };
 		3442373F1BE0AA3700965E3E /* nightclub01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373B1BE0AA3700965E3E /* nightclub01.jpg */; };
 		344237401BE0AA3700965E3E /* nightclub02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373C1BE0AA3700965E3E /* nightclub02.jpg */; };
 		344237411BE0AA3700965E3E /* nightclub03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3442373D1BE0AA3700965E3E /* nightclub03.jpg */; };
@@ -46,6 +47,8 @@
 		34B2CF4E1BE6061600E86EBC /* dance3.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B2CF4D1BE6061600E86EBC /* dance3.png */; };
 		34B2CF511BE65D1B00E86EBC /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B2CF501BE65D1B00E86EBC /* CommentsTableViewController.m */; };
 		34B2CF531BE6627E00E86EBC /* Jonny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 34B2CF521BE6627E00E86EBC /* Jonny.jpg */; };
+		34D891181BEC269600052EED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D891171BEC269600052EED /* AudioToolbox.framework */; };
+		34D8911B1BEC79AF00052EED /* StroeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D8911A1BEC79AF00052EED /* StroeDetailViewController.m */; };
 		34FC62EB1BE5C9A50083EA40 /* dance1.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FC62E91BE5C9A50083EA40 /* dance1.png */; };
 		34FC62EC1BE5C9A50083EA40 /* dance2.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FC62EA1BE5C9A50083EA40 /* dance2.png */; };
 		69248DED1BE3A4280072B03C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69248DEC1BE3A4280072B03C /* MapKit.framework */; };
@@ -96,6 +99,8 @@
 		3409D9C61BEA2BE4007A2DA9 /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
 		3409D9CB1BEA2BF2007A2DA9 /* MKPartyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPartyAnnotation.h; sourceTree = "<group>"; };
 		3409D9CC1BEA2BF2007A2DA9 /* MKPartyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPartyAnnotation.m; sourceTree = "<group>"; };
+		340BD0731BEB2541005BDA0B /* QRCodeSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeSuccess.h; sourceTree = "<group>"; };
+		340BD0741BEB2541005BDA0B /* QRCodeSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeSuccess.m; sourceTree = "<group>"; };
 		3442373B1BE0AA3700965E3E /* nightclub01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub01.jpg; sourceTree = "<group>"; };
 		3442373C1BE0AA3700965E3E /* nightclub02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub02.jpg; sourceTree = "<group>"; };
 		3442373D1BE0AA3700965E3E /* nightclub03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nightclub03.jpg; sourceTree = "<group>"; };
@@ -120,8 +125,8 @@
 		34509C9C1BD78AA900AF43FD /* ITRLeftMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITRLeftMenuController.m; sourceTree = "<group>"; };
 		3477119B1BD9384100B1796E /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTableViewController.h; path = ProjTipsy/StoreTableViewController.h; sourceTree = "<group>"; };
 		3477119C1BD9384100B1796E /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTableViewController.m; path = ProjTipsy/StoreTableViewController.m; sourceTree = "<group>"; };
-		349355761BE34FAF006723FC /* StorePFQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorePFQueryVC.h; sourceTree = "<group>"; };
-		349355771BE34FAF006723FC /* StorePFQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorePFQueryVC.m; sourceTree = "<group>"; };
+		349355761BE34FAF006723FC /* StorePFQueryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StorePFQueryVC.h; path = ProjTipsy/StorePFQueryVC.h; sourceTree = "<group>"; };
+		349355771BE34FAF006723FC /* StorePFQueryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StorePFQueryVC.m; path = ProjTipsy/StorePFQueryVC.m; sourceTree = "<group>"; };
 		3493557B1BE35E69006723FC /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		3493557D1BE3802C006723FC /* ShowDescriptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDescriptionVC.h; sourceTree = "<group>"; };
 		3493557E1BE3802C006723FC /* ShowDescriptionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDescriptionVC.m; sourceTree = "<group>"; };
@@ -129,9 +134,13 @@
 		34B2CF4F1BE65D1B00E86EBC /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
 		34B2CF501BE65D1B00E86EBC /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
 		34B2CF521BE6627E00E86EBC /* Jonny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Jonny.jpg; sourceTree = "<group>"; };
+		34D891171BEC269600052EED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		34D891191BEC79AF00052EED /* StroeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StroeDetailViewController.h; sourceTree = "<group>"; };
+		34D8911A1BEC79AF00052EED /* StroeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StroeDetailViewController.m; sourceTree = "<group>"; };
 		34FB3B391BE3152E00B5F805 /* DemoDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FC62E91BE5C9A50083EA40 /* dance1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dance1.png; sourceTree = "<group>"; };
 		34FC62EA1BE5C9A50083EA40 /* dance2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dance2.png; sourceTree = "<group>"; };
+		34FCB2D21BEAD7DA00188832 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		69248DEC1BE3A4280072B03C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		69248DFA1BE3A9F70072B03C /* notify1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notify1.png; sourceTree = "<group>"; };
 		69248DFB1BE3A9F70072B03C /* notify2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notify2.png; sourceTree = "<group>"; };
@@ -160,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D891181BEC269600052EED /* AudioToolbox.framework in Frameworks */,
 				340557391BE7CDEC009DD98F /* AVFoundation.framework in Frameworks */,
 				69248DED1BE3A4280072B03C /* MapKit.framework in Frameworks */,
 				FB93BDFBEDBF38417164BCD2 /* libPods-ProjTipsy.a in Frameworks */,
@@ -206,6 +216,8 @@
 				340367C51BE84F2E00F0016E /* qrcode.png */,
 				340557351BE7C7B0009DD98F /* QRCodeScanVC.h */,
 				340557361BE7C7B0009DD98F /* QRCodeScanVC.m */,
+				340BD0731BEB2541005BDA0B /* QRCodeSuccess.h */,
+				340BD0741BEB2541005BDA0B /* QRCodeSuccess.m */,
 			);
 			name = QRCode;
 			sourceTree = "<group>";
@@ -249,8 +261,6 @@
 				69248DFD1BE3A9F70072B03C /* notify4.png */,
 				34509C901BD77B3500AF43FD /* AppDelegate.h */,
 				34509C911BD77B3500AF43FD /* AppDelegate.m */,
-				349355761BE34FAF006723FC /* StorePFQueryVC.h */,
-				349355771BE34FAF006723FC /* StorePFQueryVC.m */,
 				3493557B1BE35E69006723FC /* placeholder.png */,
 				34509C461BD7254400AF43FD /* Assets.xcassets */,
 				34509C481BD7254400AF43FD /* LaunchScreen.storyboard */,
@@ -286,9 +296,10 @@
 		347711971BD8FBC800B1796E /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				34509C431BD7254400AF43FD /* Main.storyboard */,
 				34509C961BD782D100AF43FD /* CategoryTableViewController.h */,
 				34509C971BD782D100AF43FD /* CategoryTableViewController.m */,
+				34D891191BEC79AF00052EED /* StroeDetailViewController.h */,
+				34D8911A1BEC79AF00052EED /* StroeDetailViewController.m */,
 				3409D9AC1BE8B190007A2DA9 /* CommentsTableVC.h */,
 				3409D9AD1BE8B190007A2DA9 /* CommentsTableVC.m */,
 				3409D9B91BE9EE3A007A2DA9 /* TextFieldDelegateVC.h */,
@@ -302,6 +313,8 @@
 			children = (
 				3477119B1BD9384100B1796E /* StoreTableViewController.h */,
 				3477119C1BD9384100B1796E /* StoreTableViewController.m */,
+				349355761BE34FAF006723FC /* StorePFQueryVC.h */,
+				349355771BE34FAF006723FC /* StorePFQueryVC.m */,
 				3493557D1BE3802C006723FC /* ShowDescriptionVC.h */,
 				3493557E1BE3802C006723FC /* ShowDescriptionVC.m */,
 				34FC62E91BE5C9A50083EA40 /* dance1.png */,
@@ -312,6 +325,7 @@
 				3405572E1BE74D69009DD98F /* AddYourOpinionVC.h */,
 				3405572F1BE74D69009DD98F /* AddYourOpinionVC.m */,
 				34B2CF521BE6627E00E86EBC /* Jonny.jpg */,
+				34509C431BD7254400AF43FD /* Main.storyboard */,
 			);
 			name = StoreInfo;
 			sourceTree = "<group>";
@@ -339,6 +353,8 @@
 		D0D020D1E9C2D9791E951C8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34D891171BEC269600052EED /* AudioToolbox.framework */,
+				34FCB2D21BEAD7DA00188832 /* CoreGraphics.framework */,
 				340557381BE7CDEC009DD98F /* AVFoundation.framework */,
 				69248DEC1BE3A4280072B03C /* MapKit.framework */,
 				31573DB6A689A781C777D6AE /* libPods-ProjTipsy.a */,
@@ -565,6 +581,8 @@
 				34B2CF511BE65D1B00E86EBC /* CommentsTableViewController.m in Sources */,
 				34509C861BD77B2000AF43FD /* ITRAirSideMenu.m in Sources */,
 				34509C8F1BD77B2D00AF43FD /* ITRSecondViewController.m in Sources */,
+				34D8911B1BEC79AF00052EED /* StroeDetailViewController.m in Sources */,
+				340BD0751BEB2541005BDA0B /* QRCodeSuccess.m in Sources */,
 				340557301BE74D69009DD98F /* AddYourOpinionVC.m in Sources */,
 				34509C981BD782D100AF43FD /* CategoryTableViewController.m in Sources */,
 				34509C9D1BD78AA900AF43FD /* ITRLeftMenuController.m in Sources */,

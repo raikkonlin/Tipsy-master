@@ -7,6 +7,7 @@
 //
 
 #import "QRCodeScanVC.h"
+#import "AFNetworking.h"
 
 @interface QRCodeScanVC () <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -19,6 +20,14 @@
 
     UIView *_highlightView;
     UILabel *_label;
+
+    UIImageView *qrImageView;
+
+
+    NSArray *receivedArray;
+    NSDictionary *receivedDictionay;
+    NSString *receivedString;
+
 }
 
 @property (weak, nonatomic) IBOutlet UIView *viewPreview;
@@ -41,11 +50,11 @@
 
     _label = [[UILabel alloc] init];
     _label.frame = CGRectMake(0, self.view.bounds.size.height - 80, self.view.bounds.size.width, 80);
-    _label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    _label.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _label.backgroundColor = [UIColor colorWithWhite:0.15 alpha:0.65];
     _label.textColor = [UIColor whiteColor];
     _label.textAlignment = NSTextAlignmentCenter;
-    _label.text = @"(none)";
+    _label.text = @"(waiting)";
     [self.view addSubview:_label];
 
     _session = [[AVCaptureSession alloc] init];
@@ -75,6 +84,10 @@
 
     [self.view bringSubviewToFront:_highlightView];
     [self.view bringSubviewToFront:_label];
+
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCodeAuth" object:nil
+//                                                      userInfo:receivedString];
+
 
 }
 
@@ -148,13 +161,24 @@
         if (detectionString != nil)
         {
             _label.text = detectionString;
+            receivedDictionay = @{@"detectionString":detectionString};
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCodeAuth" object:nil
+                             userInfo:receivedDictionay];
+
+//
+            [self dismissViewControllerAnimated:NO completion:nil];
+//            [self performSelector:@selector(QRCodeAuth:) withObject:detectionString afterDelay:0];
             break;
         }
         else
-            _label.text = @"(none)";
+            _label.text = @"(waiting)";
     }
 
     _highlightView.frame = highlightViewRect;
+
+//        [self QRCodeAuth:receivedString];
+
 }
 
 
@@ -167,4 +191,6 @@
     [super didReceiveMemoryWarning];
         // Dispose of any resources that can be recreated.
 }
+
+
 @end

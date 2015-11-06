@@ -20,10 +20,13 @@
     __weak UIButton *_buttonToComment;
 
     NSMutableArray *storeCommentArray;
+    NSString *fbUserName;
+    NSString *fbUserID;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *labelUserName;
+
 
 @end
 
@@ -35,32 +38,31 @@
 
     [super viewDidLoad];
 
-//    UIImageView *weakImageView = (UIImageView*)[weakCell.contentView viewWithTag:90];
-
     
+
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    fbUserName = [userDefaultes stringForKey:@"userName"];
+    fbUserID = [userDefaultes stringForKey:@"userID"];
+
+    NSString *path1 = [@"http://graph.facebook.com/" stringByAppendingString:fbUserID ];
+    NSString *path =[path1 stringByAppendingString:@"/picture"];
+    [self.userImage setImageWithURL:[NSURL URLWithString:path]];
+
     /*
-    FBSDKProfile *profile = [FBSDKProfile currentProfile];
-    
-    if(profile) {
-        NSLog(@"profile yes");
-        FBSDKProfilePictureView *userImage = (FBSDKProfilePictureView*)[self.view viewWithTag:110];
-        [self.view addSubview:userImage];
-
-        userImage.profileID = profile.userID;
-    }
-    else
-    {
-   NSLog(@"profile no"); }
+    AFHTTPRequestOperationManager *manager =         [AFHTTPRequestOperationManager manager];
+    [manager GET:path parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {        ObjectNSLog(@"JSON: %@", responseObject);   } failure:^(AFHTTPRequestOperation *operation, NSError *error) { NSLog(@"Error: %@", error);  }];
      */
 
-    self.userImage.image = [UIImage imageNamed:@"Jonny.jpg"];
+//    self.userImage.image = [UIImage imageNamed:@"Jonny.jpg"];
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
     self.userImage.layer.borderWidth =3.0f;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width/2;
     self.userImage.clipsToBounds = YES;
 
     
-    self.labelUserName.text = @"Johnny Scrap";
+//    self.labelUserName.text = @"Johnny Scrap";
+    self.labelUserName.text = fbUserName;
     self.labelUserName.textColor = [UIColor whiteColor];
 
     UIButton *buttonToComment = [[UIButton alloc] initWithFrame:CGRectMake(0, self.tableView.bounds.size.height-50, self.tableView.bounds.size.width, 50)];
@@ -81,8 +83,16 @@
     _buttonToComment = buttonToComment;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
 //    NSLog(@"%@",self.storeId);
+
     [self loadStoreComments];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(AddCommentRefresh:)
+                                                 name:@"AddCommentRefresh"
+                                               object:nil];
+
 }
+
+
 
 -(void)viewDidAppear:(BOOL)animated{
 
@@ -121,6 +131,7 @@
 
     [self.tableView reloadData];
 }
+
 
 -(void)AddYourOpinionButton{
 
@@ -168,7 +179,6 @@
     storeCommentArray= [NSMutableArray arrayWithCapacity:40];
 
         // 將網址字串轉為 NSURLRequest 物件 request
-//    NSString *temp =
     NSString *urlString = @"http://www.pa9.club/api/v1/stores/";
     urlString = [urlString stringByAppendingString:self.storeId];
     NSLog(@"self.storeId %@",self.storeId);
@@ -193,6 +203,7 @@
             //        NSLog(@"err:%@",data[@"err"]);
 
         storeCommentArray = data[@"comment"];
+        NSLog(@"data  %@",data[@"comment"]);
 
             //*** 重新顯示 tableView
         [self.tableView reloadData];
@@ -209,8 +220,7 @@
     }];
         // 執行 operation
     [operation start];
-    
-    
+
 }
 
 
@@ -306,7 +316,7 @@
             UIImageView *weakImageView = (UIImageView*)[weakCell.contentView viewWithTag:110];
             weakImageView.layer.borderColor = [UIColor whiteColor].CGColor;
             weakImageView.layer.borderWidth =1.0f;
-            weakImageView.layer.cornerRadius = 60;
+            weakImageView.layer.cornerRadius = 50;
             weakImageView.clipsToBounds = YES;
             weakImageView.image = image;
             weakImageView.contentMode = UIViewContentModeScaleToFill;
@@ -340,13 +350,11 @@
     return cell;
 }
 
--(void)AddEditNotification:(NSNotification *)notification{
-    
-    [self.tableView reloadData];
-    
+
+- (void)viewWillAppear:(BOOL)animated{
+
+  [self.tableView reloadData];
 }
-
-
 
 -(void)backButtonPressed{
 
@@ -356,5 +364,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)AddCommentRefresh:(NSNotification *) notification
+{
+    [self loadStoreComments];
 }
 @end

@@ -53,11 +53,11 @@
 - (void)setResult:(id)result {
     [self.task setResult:result];
 }
-
+/*
 - (void)setError:(NSError *)error {
     [self.task setError:error];
 }
-
+*/
 - (void)setException:(NSException *)exception {
     [self.task setException:exception];
 }

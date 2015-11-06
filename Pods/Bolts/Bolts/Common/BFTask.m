@@ -209,14 +209,14 @@ NSString *const BFTaskMultipleExceptionsException = @"BFMultipleExceptionsExcept
         return _error;
     }
 }
-
+/*
 - (void)setError:(NSError *)error {
     if (![self trySetError:error]) {
         [NSException raise:NSInternalInconsistencyException
                     format:@"Cannot set the error on a completed task."];
     }
 }
-
+*/
 - (BOOL)trySetError:(NSError *)error {
     @synchronized(self.lock) {
         if (self.completed) {

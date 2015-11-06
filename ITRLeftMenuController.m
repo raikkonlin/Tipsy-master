@@ -69,18 +69,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(fbTokenChangeNoti:)
                                                  name:FBSDKAccessTokenDidChangeNotification object:nil];
-
-
-
-
-
-
-   NSLog(@"%@",userDefault);
-
-
 }
 
 -(void)fbTokenChangeNoti:(NSNotification*)noti {
+
+    userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:[FBSDKProfile currentProfile].name forKey:@"userName"];
+    [userDefault setObject:[FBSDKProfile currentProfile].userID forKey:@"userID"];
 
     NSLog(@"User name: %@",[FBSDKProfile currentProfile].name);
     NSLog(@"User ID: %@",[FBSDKProfile currentProfile].userID);
@@ -108,8 +103,7 @@
             NSLog(@"JSON:%@",responseObject);
                 //NSString *message = responseObject[@"message"];
             NSString *loginToken = responseObject[@"auth_token"];
-            userDefault = [NSUserDefaults
-                           standardUserDefaults];
+//            userDefault = [NSUserDefaults standardUserDefaults];
             [userDefault setObject:loginToken forKey:@"loginToken"];
             NSLog(@"%@",loginToken);
             [userDefault synchronize];
@@ -123,7 +117,7 @@
               }];
     }
     else{
-
+   /*
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
         [login logInWithPublishPermissions:@[@"publish_actions"] handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             if (error) {
@@ -154,7 +148,7 @@
 
                 }
             }
-        }];
+        }];*/
         
     }
 }
@@ -189,7 +183,7 @@
     }
     else if (selectedIndexPath.row == 2){
 
-        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[TaxiTableViewController controller]]];
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[CategoryTableViewController controller]]];
     }
     else if (selectedIndexPath.row == 3){
         

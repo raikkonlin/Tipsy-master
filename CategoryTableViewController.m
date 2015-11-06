@@ -12,7 +12,8 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import <SystemConfiguration/SystemConfiguration.h> //檢查連線狀況
-#import "CommentsTableVC.h"
+//#import "CommentsTableVC.h"
+#import "StroeDetailViewController.h"
 
 @interface CategoryTableViewController ()
 
@@ -56,6 +57,11 @@
 
 
     [self loadTipsyMetadata];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(AddCommentRefresh:)
+                                                 name:@"AddCommentRefresh"
+                                               object:nil];
 
 
 }
@@ -99,7 +105,7 @@
 
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
+        //最好讓operation變為instance variable  如果有切換頁面的話 可以回收
         // 使用 AFNetworking 的類別 AFHTTPRequestOperation 建立物件 operation
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 
@@ -211,11 +217,11 @@
     NSNumber *message_id = [NSNumber numberWithInt:[[metaData objectForKey:@"comments_count"] intValue]];
 
     commentLabel.text = [message_id stringValue];
-    commentLabel.textColor = [UIColor colorWithRed:51/255.0 green:152/255.0 blue:219/255.0 alpha:1.0];
+    commentLabel.textColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
     [commentLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:20]];
-    commentLabel.layer.cornerRadius = commentLabel.frame.size.width/2;
+    commentLabel.layer.cornerRadius = 7.0;
     commentLabel.layer.borderWidth = 1.0f;
-    commentLabel.layer.borderColor = [UIColor colorWithRed:51/255.0 green:152/255.0 blue:219/255.0 alpha:1.0].CGColor;
+    commentLabel.layer.borderColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0].CGColor;
     commentLabel.layer.masksToBounds = YES;
 
             if ( [metaData[@"photo"] isEqual: [NSNull null]] ) {
@@ -273,14 +279,26 @@
      UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controllerEvent];
      */
 
+   StroeDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"StroeDetailViewController"];
+
+    NSDictionary  *dictEdit = self.tipsyMetadata[indexPath.row];
+    NSLog(@"store %@",[dictEdit objectForKey:@"id"]);
+    controller.storeId = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"id"]];
+    controller.storeName = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"name"]];
+    controller.commentLabel = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"comments_count"]];
+
+
+    /*  直接接 CommentsTableVC ＊＊＊＊
     CommentsTableVC *controllerEvent = [self.storyboard instantiateViewControllerWithIdentifier:@"CommentsTableVC"];
+    NSDictionary  *dictEdit = self.tipsyMetadata[indexPath.row];
+    NSLog(@"store %@",[dictEdit objectForKey:@"id"]);
+    controllerEvent.storeId = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"id"]];
+     */
 /*
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     controllerEvent.storeName = [object objectForKey:@""];
     controllerEvent.objectID = [object objectId];*/
-    NSDictionary  *dictEdit = self.tipsyMetadata[indexPath.row];
-    NSLog(@"store %@",[dictEdit objectForKey:@"id"]);
-    controllerEvent.storeId = [NSString stringWithFormat:@"%@",[dictEdit objectForKey:@"id"]];
+
 
         //    UILabel *storeNameLabel = [[UILabel alloc] init];
         //    storeNameLabel.text = [object objectForKey:@"storename"];
@@ -298,13 +316,17 @@
     controllerEvent.imageFile3 = [object objectForKey:@""];
     controllerEvent.likeLabel  = [object objectForKey:@""];*/
 
-    [self presentViewController:controllerEvent animated:NO completion:nil];
+    [self presentViewController:controller animated:NO completion:nil];
 
 }
 
--(void)AddEditNotification:(NSNotification *)notification{
+- (void)viewWillAppear:(BOOL)animated{
 
     [self.tableView reloadData];
+}
 
+- (void)AddCommentRefresh:(NSNotification *) notification
+{
+    [self loadTipsyMetadata];
 }
 @end
