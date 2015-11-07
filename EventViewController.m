@@ -229,7 +229,7 @@
                             [_eventPageView addSubview:imageView];
                             [arrayDetail addObject:dic];
 //                            製作btn
-                            NSString *btn = [NSString stringWithFormat:@"ShowView%d", i];
+//                            NSString *btn = [NSString stringWithFormat:@"ShowView%d", i];
                             UIButton *detailbtn = [UIButton buttonWithType:UIButtonTypeCustom];
                             [detailbtn addTarget:self
                                           action:@selector(partyDetailPressed:)

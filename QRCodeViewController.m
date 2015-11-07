@@ -19,6 +19,8 @@
 
     NSDictionary *receivedDictionay;
     NSString *authToken;
+    NSDictionary *receivedVIPDictionay;
+    UIImage *qrCodeImg;
 
 }
 @property (weak, nonatomic) IBOutlet UIImageView *qrCodeImageView;
@@ -41,6 +43,8 @@
 
     [super viewDidLoad];
     hasVIPService = YES;
+    qrCodeImg = nil;
+
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat height = [UIScreen mainScreen].bounds.size.width;
     UILabel *labelNotice = [[UILabel alloc] init];
@@ -62,8 +66,14 @@
 
     }
 
-    self.qrCodeImageView.image = [UIImage imageNamed:@"qrcode.png"];
+    if (qrCodeImg != nil) {
 
+        self.qrCodeImageView.image = [UIImage imageNamed:@"qrcode.png"];
+    }
+    else{
+
+    self.qrCodeImageView.image = [UIImage imageNamed:@"qrcode.png"];
+    }
     UIApplication *app = [UIApplication sharedApplication];
     [app setStatusBarHidden:YES withAnimation:YES];
 
@@ -197,21 +207,98 @@
 }
 
 
+- (IBAction)getQRCodeButton:(UIButton *)sender {
 
 
-/*  QRcode
-- (void) handleGenerateButtonPressed {
+    NSString *URL_GETVIP = @"http://www.pa9.club//api/v1/getvip";
 
-    NSString *stringToEncode =
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+
+    NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    authToken = [userDefaultes stringForKey:@"loginToken"];
+
+    NSDictionary *params = @ {@"auth_token" :authToken};
+
+    NSLog(@"params  %@",params);
+
+    [manager GET:URL_GETVIP parameters:params
+          success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+
+         NSLog(@"JSON: %@", responseObject);
+         receivedVIPDictionay = responseObject;
+         NSString *message = receivedVIPDictionay[@"message"];
+         NSString *qrCodeString = receivedVIPDictionay[@"code"];
+         NSLog(@"message %@",message);
+         NSLog(@"qrCodeString %@",qrCodeString);
+
+         if ( [message  isEqualToString:@"confirm successfully!"]) {
+
+             [self handleGenerate:qrCodeString];
+             NSLog(@"jjjjjjjjjjjjjjjjjj %@",qrCodeString);
+
+         }else{
+
+             UIAlertController *alertAsk = [UIAlertController alertControllerWithTitle:@"111No Available QRCODE" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+             UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"No RecordS! Check Please!" style:UIAlertActionStyleDefault handler:nil];
+
+             [alertAsk addAction:okButton];
+
+             alertAsk.view.tintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
+
+             [self presentViewController:alertAsk animated:YES completion:nil];
+
+         }
+
+
+     }
+          failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error) {
+        /* //----------
+          UIAlertController *alertAsk = [UIAlertController alertControllerWithTitle:@"Internet connection error." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+          UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"Sorry, try again." style:UIAlertActionStyleDefault handler:nil];
+
+          [alertAsk addAction:okButton];
+
+          alertAsk.view.tintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
+
+          [self presentViewController:alertAsk animated:YES completion:nil];
+      */ //------
+         UIAlertController *alertAsk = [UIAlertController alertControllerWithTitle:@"222No Available QRCODE" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+         UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"No Records! Check Please!" style:UIAlertActionStyleDefault handler:nil];
+
+         [alertAsk addAction:okButton];
+
+         alertAsk.view.tintColor = [UIColor colorWithRed:0.9 green:0.41 blue:0.15 alpha:1.0];
+         
+         [self presentViewController:alertAsk animated:YES completion:nil];
+         NSLog(@"Error: %@", [error localizedDescription]);
+     }];
+
+
+
+//    [self handleGenerate:@"1234567890Tipsy"];
+
+}
+
+
+- (void)handleGenerate:(NSString *)receivedQRString{
+
+    NSString *stringToEncode = receivedQRString;
 
         // Generate the image
     CIImage *qrCode = [self createQRForString:stringToEncode];
 
         // Convert to an UIImage
-    UIImage *qrCodeImg = [self createNonInterpolatedUIImageFromCIImage:qrCode withScale:2*[[UIScreen mainScreen] scale]];
+       qrCodeImg = [self createNonInterpolatedUIImageFromCIImage:qrCode withScale:2*[[UIScreen mainScreen] scale]];
 
         // And push the image on to the screen
-    self.qrImageView.image = qrCodeImg;
+    self.qrCodeImageView.image = qrCodeImg;
+    self.qrCodeImageView.contentMode = UIViewContentModeScaleToFill;
 
 }
 
@@ -255,6 +342,6 @@
     
     return flippedImage;
 }
-*/
+
 
 @end

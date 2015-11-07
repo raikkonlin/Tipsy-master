@@ -13,7 +13,7 @@
 @property (nonatomic) NSMutableArray *APITitlearray;
 @property (nonatomic) NSMutableArray *APIImagearray;
 -(void)getAPIdata;
-- (IBAction)partyDetailPressed:(UIButton *)sender;
+//- (IBAction)partyDetailPressed:(UIButton *)sender;
 
 
 @end
