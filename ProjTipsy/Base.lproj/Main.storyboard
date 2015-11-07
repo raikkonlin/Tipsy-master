@@ -2006,10 +2006,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRS-mg-q7F">
-                                <rect key="frame" x="0.0" y="363" width="600" height="237"/>
+                                <rect key="frame" x="0.0" y="270" width="600" height="330"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7u-ZO-zwi">
-                                        <rect key="frame" x="8" y="87" width="116" height="21"/>
+                                        <rect key="frame" x="8" y="180" width="116" height="21"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="OQp-R2-sn0"/>
@@ -2020,7 +2020,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHX-xA-02f">
-                                        <rect key="frame" x="127" y="-10" width="452" height="216"/>
+                                        <rect key="frame" x="127" y="83" width="452" height="216"/>
                                         <animations/>
                                         <connections>
                                             <outlet property="dataSource" destination="LKr-b9-CYl" id="Oao-Dg-YcH"/>
@@ -2028,7 +2028,7 @@
                                         </connections>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-1L-gxv">
-                                        <rect key="frame" x="24" y="176" width="553" height="43"/>
+                                        <rect key="frame" x="24" y="269" width="553" height="43"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="wu3-B3-OWd"/>
@@ -2050,7 +2050,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRd-bC-gGZ">
-                                        <rect key="frame" x="521" y="183" width="30" height="30"/>
+                                        <rect key="frame" x="521" y="276" width="30" height="30"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -2073,7 +2073,7 @@
                                     <constraint firstAttribute="width" constant="600" id="fTg-Fv-rVE"/>
                                     <constraint firstItem="CHX-xA-02f" firstAttribute="leading" secondItem="q7u-ZO-zwi" secondAttribute="trailing" constant="3" id="hY2-X1-yXf"/>
                                     <constraint firstItem="DYi-1L-gxv" firstAttribute="top" secondItem="CHX-xA-02f" secondAttribute="bottom" constant="-30" id="lPE-yv-pyG"/>
-                                    <constraint firstAttribute="height" constant="237" id="mE3-83-EpY"/>
+                                    <constraint firstAttribute="height" constant="330" id="mE3-83-EpY"/>
                                     <constraint firstItem="q7u-ZO-zwi" firstAttribute="centerY" secondItem="CHX-xA-02f" secondAttribute="centerY" id="sP8-5I-MkI"/>
                                     <constraint firstItem="DYi-1L-gxv" firstAttribute="leading" secondItem="q7u-ZO-zwi" secondAttribute="leading" constant="16" id="vo7-Gq-JJQ"/>
                                     <constraint firstAttribute="trailing" secondItem="CHX-xA-02f" secondAttribute="trailing" constant="21" id="yof-74-dJi"/>
